@@ -3,6 +3,7 @@
 log() {
   echo "$@" >&2
 }
+
 die(){
   log "$@" >&2
   exit 1
