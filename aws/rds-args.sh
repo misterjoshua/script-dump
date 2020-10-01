@@ -25,4 +25,4 @@ SECRET=$1
 
 get_args $SECRET
 
-# vim: set sw=2 ts=2 ai nocindent :
+# vim: set sw=2 ts=2 ai nocidnent :

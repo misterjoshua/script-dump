@@ -3,7 +3,6 @@
 log() {
   echo "$@" >&2
 }
-
 die(){
   log "$@" >&2
   exit 1
@@ -15,7 +14,7 @@ syntax() {
 
 get_args() {
   SECRET=$1
-  aws secretsmanager get-secret-value --secret-id "$SECRET" | jq '.SecretString'                                                                                                               -r | jq '"-u " + .username + " -p" + .password + " -h " + .host' -r
+  aws secretsmanager get-secret-value --secret-id "$SECRET" | jq '.SecretString' -r | jq '"-u " + .username + " -p" + .password + " -h " + .host' -r
 }
 
 set -e
@@ -42,4 +41,4 @@ echo "DROP DATABASE IF EXISTS $TO_DB; CREATE DATABASE $TO_DB;" | mysql $TO_ARGS
 log "Importing to $TO_SECRET $TO_DB"
 mysql $TO_ARGS $TO_DB <db.sql
 
-# vim: set sw=2 ts=2 ai nocindent :
+# vim: set sw=2 ts=2 ai nocidnent :
