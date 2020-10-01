@@ -4,7 +4,7 @@ log() {
   echo "$@" >&2
 }
 
-die(){
+die() {
   log "$@" >&2
   exit 1
 }

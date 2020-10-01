@@ -3,7 +3,7 @@
 log() {
   echo "$@" >&2
 }
-die(){
+die() {
   log "$@" >&2
   exit 1
 }
@@ -33,7 +33,7 @@ FROM_ARGS=$(get_args $FROM_SECRET)
 TO_ARGS=$(get_args $TO_SECRET)
 
 log "Dumping $FROM_SECRET $FROM_DB"
-mysqldump $FROM_ARGS --opt $FROM_DB >db.sql
+mysqldump $FROM_ARGS --opt $FROM_DB -r db.sql
 
 log "Dropping and recreating $TO_SECRET $TO_DB"
 echo "DROP DATABASE IF EXISTS $TO_DB; CREATE DATABASE $TO_DB;" | mysql $TO_ARGS
